@@ -1,16 +1,20 @@
 {
-  "name": "mcp-mixpanel",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "@mattgreathouse/mixpanel-mcp",
+  "version": "1.0.2",
+  "description": "MCP server for querying Mixpanel data",
+  "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
-    "postinstall": "npm run build"
+    "prepack": "npm run build"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "mcp",
+    "mixpanel",
+    "model-context-protocol"
+  ],
+  "author": "Matt Greathouse",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.6.1",
     "zod": "^3.24.2"
@@ -21,9 +25,20 @@
   },
   "type": "module",
   "bin": {
-    "mcp-mixpanel": "./build/index.js"
+    "mixpanel-mcp": "./build/index.js"
   },
   "files": [
     "build"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gobii-ai/mixpanel-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gobii-ai/mixpanel-mcp/issues"
+  },
+  "homepage": "https://github.com/gobii-ai/mixpanel-mcp#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }
