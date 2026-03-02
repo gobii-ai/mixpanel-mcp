@@ -26,6 +26,8 @@ To install mixpanel-mcp for Claude Desktop automatically via [Smithery](https://
 npx -y @smithery/cli install @dragonkhoi/mixpanel-mcp --client claude
 ```
 
+After installing, make sure Claude Desktop provides the required env vars (`MIXPANEL_SERVICE_ACCOUNT_USERNAME`, `MIXPANEL_SERVICE_ACCOUNT_PASSWORD`, and `MIXPANEL_PROJECT_ID`) to the server process.
+
 To install mixpanel-mcp for Cursor, go to Settings -> Cursor Settings -> Features -> MCP Servers -> + Add
 
 Select Type: command and paste the below, replacing env var values with your Mixpanel credentials:

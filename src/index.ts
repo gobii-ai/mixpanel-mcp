@@ -19,9 +19,9 @@ if (missingEnvVars.length > 0) {
   process.exit(1);
 }
 
-const SERVICE_ACCOUNT_USER_NAME = process.env.MIXPANEL_SERVICE_ACCOUNT_USERNAME as string;
-const SERVICE_ACCOUNT_PASSWORD = process.env.MIXPANEL_SERVICE_ACCOUNT_PASSWORD as string;
-const DEFAULT_PROJECT_ID = process.env.MIXPANEL_PROJECT_ID as string;
+const SERVICE_ACCOUNT_USER_NAME = process.env.MIXPANEL_SERVICE_ACCOUNT_USERNAME!;
+const SERVICE_ACCOUNT_PASSWORD = process.env.MIXPANEL_SERVICE_ACCOUNT_PASSWORD!;
+const DEFAULT_PROJECT_ID = process.env.MIXPANEL_PROJECT_ID!;
 
 server.tool(
   "get_today_top_events",
