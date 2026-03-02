@@ -7,16 +7,21 @@ const server = new McpServer({
     version: "1.0.0"
 })
 
-const args = process.argv.slice(2);
+const REQUIRED_ENV_VARS = [
+  "MIXPANEL_SERVICE_ACCOUNT_USERNAME",
+  "MIXPANEL_SERVICE_ACCOUNT_PASSWORD",
+  "MIXPANEL_PROJECT_ID",
+] as const;
 
-if (args.length === 0) {
-  console.error("Please provide a Mixpanel service account username and password and a project ID");
+const missingEnvVars = REQUIRED_ENV_VARS.filter((envVar) => !process.env[envVar]);
+if (missingEnvVars.length > 0) {
+  console.error(`Missing required environment variable(s): ${missingEnvVars.join(", ")}`);
   process.exit(1);
 }
 
-const SERVICE_ACCOUNT_USER_NAME = process.env.SERVICE_ACCOUNT_USER_NAME || args[0] || "YOUR SERVICE ACCOUNT USERNAME";
-const SERVICE_ACCOUNT_PASSWORD = process.env.SERVICE_ACCOUNT_PASSWORD || args[1] || "YOUR SERVICE ACCOUNT PASSWORD";
-const DEFAULT_PROJECT_ID = process.env.DEFAULT_PROJECT_ID || args[2] || "YOUR PROJECT ID";
+const SERVICE_ACCOUNT_USER_NAME = process.env.MIXPANEL_SERVICE_ACCOUNT_USERNAME!;
+const SERVICE_ACCOUNT_PASSWORD = process.env.MIXPANEL_SERVICE_ACCOUNT_PASSWORD!;
+const DEFAULT_PROJECT_ID = process.env.MIXPANEL_PROJECT_ID!;
 
 server.tool(
   "get_today_top_events",
