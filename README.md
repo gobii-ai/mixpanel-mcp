@@ -12,6 +12,12 @@ I am adding more coverage of the Mixpanel API over time, let me know which tools
 ## Installation
 Make sure to go to your Mixpanel Organization Settings to set up a [Mixpanel Service Account](https://developer.mixpanel.com/reference/service-accounts), get the username, password, and your project ID (in Mixpanel Project Settings).
 
+### Required environment variables
+
+- `MIXPANEL_SERVICE_ACCOUNT_USERNAME`
+- `MIXPANEL_SERVICE_ACCOUNT_PASSWORD`
+- `MIXPANEL_PROJECT_ID`
+
 ### Installing via Smithery
 
 To install mixpanel-mcp for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@dragonkhoi/mixpanel-mcp):
@@ -22,16 +28,16 @@ npx -y @smithery/cli install @dragonkhoi/mixpanel-mcp --client claude
 
 To install mixpanel-mcp for Cursor, go to Settings -> Cursor Settings -> Features -> MCP Servers -> + Add
 
-Select Type: command and paste the below, using the arguments `<USERNAME> <PW> <PROJECT_ID>` from Mixpanel
+Select Type: command and paste the below, replacing env var values with your Mixpanel credentials:
 ```
-npx -y @smithery/cli@latest run @dragonkhoi/mixpanel-mcp --config "{\"username\":\"YOUR_SERVICE_ACCT_USERNAME\",\"password\":\"YOUR_SERVICE_ACCT_PASSWORD\",\"projectId\":\"YOUR_MIXPANEL_PROJECT_ID\"}"
+MIXPANEL_SERVICE_ACCOUNT_USERNAME=YOUR_SERVICE_ACCT_USERNAME MIXPANEL_SERVICE_ACCOUNT_PASSWORD=YOUR_SERVICE_ACCT_PASSWORD MIXPANEL_PROJECT_ID=YOUR_MIXPANEL_PROJECT_ID npx -y @smithery/cli@latest run @dragonkhoi/mixpanel-mcp
 ```
 
 ### Clone and run locally
 Clone this repo
 Run `npm run build`
 Paste this command into Cursor (or whatever MCP Client)
-`node /ABSOLUTE/PATH/TO/mixpanel-mcp/build/index.js YOUR_SERVICE_ACCOUNT_USERNAME YOUR_SERVICE_ACCOUNT_PASSWORD YOUR_PROJECT_ID`
+`MIXPANEL_SERVICE_ACCOUNT_USERNAME=YOUR_SERVICE_ACCOUNT_USERNAME MIXPANEL_SERVICE_ACCOUNT_PASSWORD=YOUR_SERVICE_ACCOUNT_PASSWORD MIXPANEL_PROJECT_ID=YOUR_PROJECT_ID node /ABSOLUTE/PATH/TO/mixpanel-mcp/build/index.js`
 
 ## Examples
 - Ask about retention numbers
